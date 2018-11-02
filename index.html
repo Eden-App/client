@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="referrer" content="no-referrer" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <!-- google  login api -->
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <meta name="google-signin-client_id" content="850610229805-odf05gmg7a4lnjjqk3tc80d7rvqt3jpn.apps.googleusercontent.com">
+
+  <title>Eden</title>
+  <!-- ! BOOTSTRAP -->
+  <link rel="stylesheet" href="./style/bootstrap.css">
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous"> -->
+  <link rel="stylesheet" href="./style/custom-css.css">
+</head>
+
+<body>
+  <!-- ! JQUERY ETC. -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"></script>
+
+    <!-- ! CUSTOM SCRIPT -->
+    <script src="lib/jQueryYoutube.js"></script>
+    <script src="lib/jquery.js"></script>
+
+  <!-- ! HEADER -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#" id="brandName">Eden</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item mr-3"><a class="navbar-header" href="#" id="mangaToggle">Manga</a></li>
+        <li class="nav-item mr-3"><a class="navbar-header" href="#" id="newsToggle">News</a></li>
+        <li class="nav-item mr-3"><a class="navbar-header" href="#" id="youtubeToggle">YouTube</a></li>
+      </ul>
+
+
+      <!-- Google icon-->
+      <ul class="align-middle navbar-nav">
+        <!-- Login form-->
+        <li class="nav-item" style="margin-left: 5px">
+          <button type="button" class="btn btn-primary" id="logout">Log Out</button>
+        </li>
+        <li class="nav-item" style="margin-left: 5px">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-register-modal-sm">Sign Up</button>
+        </li>
+        <li class="nav-item" style="margin-left: 5px">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-login-modal-sm">Sign In</button>
+        </li>
+      </ul>
+
+    </div>
+  </nav>
+
+  <!-- ! YPOOOOOOOOOUUUUUUTTTTUUUUUUUBBBBBEEEEEE -->
+  <div id="youtube">
+    <div class="container-fluid">
+    
+      <div class="row" id="all">
+        <!-- player -->
+        <div class="col-8 overflowAble player" id="player">
+          <iframe id="player" type="text/html" width="1080" height="720" src="http://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1&origin=http://example.com"
+            frameborder="0"></iframe>
+        </div>
+        <!-- all search result -->
+        <div class="col-4 overflowAble search">
+          <input class="form-control col-form-label" type="text" name="search" id="youtubeSearch" placeholder="👁">
+          <br>
+          <button type="submit" class="btn btn-primary" id="submitSearch">🔥 Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <div class="container-fluid" id="news">
+
+    <div class="row" id="all">
+      <!-- ! Showing data list -->
+      <div class="col overflowAble col-3 showAgain">
+        <div type="form-control" id="searchDiv">
+          <input class="form-control col-form-label" type="text" name="search" id="search" placeholder="📰">
+          <hr>
+        </div>
+        <div id="newsList">
+
+        </div>
+      </div>
+      <div class="col overflowAble col-9 showAgain" id="newsIframe">
+      </div>
+    </div>
+  </div>
+  
+  <!-- ! MODAL -->
+  <div class="modal fade bd-register-modal-sm" style="height: 24%" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content border">
+        <div class="container " style="margin : 20px">
+          <h2>Form Register</h2>
+          <div id="login-form" style="margin : 20px">
+  
+            <input type="text" id="name" placeholder="name..." style="margin : 5px">
+            <input type="email" id="email" placeholder="email..." style="margin : 5px">
+            <input type="password" id="password" placeholder="password">
+  
+  
+  
+            <div class="d-flex flex-row-reverse" style="margin: 15px">
+              <button id="signup" data-dismiss="modal" class="btn-warning">Sign Up</button>
+            </div>
+  
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade bd-login-modal-sm" style="height: 24%" tabindex="-1" role="dialog"       aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content border">
+        <div class="container " style="margin : 20px">
+          <h2>Form Login</h2>
+          <div id="register-form" style="margin : 20px">
+  
+            <input type="email" id="email-login" placeholder="email..." style="margin : 5px">
+            <input type="password" id="password-login" placeholder="password" style="margin : 5px">
+            <div class="d-flex flex-row-reverse" style="margin: 15px">
+  
+              <button id="signin" data-dismiss="modal" class="btn-success" style="margin-left: 5px">Sign in</button>
+              <div class="g-signin2" data-dismiss="modal" data-onsuccess="onSignIn"></div>
+  
+            </div>
+  
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    // HIDING STUFF
+    
+    $("#youtube").hide()
+
+    $("#youtubeToggle").click(function() {
+      $("#news").hide()
+      $("#youtube").show()
+    })
+
+    $("#newsToggle").click(function() {
+      $("#youtube").hide()
+      $("#news").show()
+
+    })
+
+    function onSignIn(googleUser) {
+      console.log('google sign in')
+        let id_token = googleUser.getAuthResponse().id_token;
+
+        $.ajax({
+          method: 'POST',
+          url: 'http://localhost:3000/users/gsignin',
+          data: {
+            idToken: id_token
+          }
+        })
+          .done(jwtToken => {
+            console.log('token :', jwtToken)
+            localStorage.setItem('token', jwtToken)
+
+          })
+          .fail(error => {
+            console.log(error)
+            $("#error").text(JSON.stringify(error))
+          })
+
+      }
+
+      $("#signup").click(function () {
+        $.ajax({
+          method: 'POST',
+          url: 'http://localhost:3000/users/signup',
+          data: {
+            name: $("#name").val(),
+            email: $("#email").val(),
+            password: $("#password").val()
+          }
+        })
+          .done(response => {
+            console.log(response)
+          })
+          .fail(error => {
+            $("#error").text(JSON.stringify(error))
+          })
+      })
+
+      $("#signin").click(function () {
+        console.log('signin')
+        $.ajax({
+          method: 'POST',
+          url: 'http://localhost:3000/users/signin',
+          data: {
+            email: $("#email-login").val(),
+            password: $("#password-login").val()
+          }
+        })
+          .done(jwtToken => {
+            console.log('sign manual :', jwtToken)
+            localStorage.setItem('token', jwtToken)
+          })
+          .fail(error => {
+            $("#error").text(JSON.stringify(error))
+          })
+      })
+
+      $("#logout").click(function () {
+        localStorage.clear()
+      })
+  </script>
+  
+</body>
+</html>
