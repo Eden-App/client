@@ -32,6 +32,7 @@
     <!-- ! CUSTOM SCRIPT -->
     <script src="lib/jQueryYoutube.js"></script>
     <script src="lib/jquery.js"></script>
+    <script src="lib/jquery2.js"></script>
 
   <!-- ! HEADER -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -61,7 +62,6 @@
     </div>
   </nav>
 
-  <!-- ! YPOOOOOOOOOUUUUUUTTTTUUUUUUUBBBBBEEEEEE -->
   <div id="youtube">
     <div class="container-fluid">
     
@@ -150,22 +150,59 @@
     </div>
   </div>
 
+  
+
+    <div class="main-box">
+            <div class="row">
+                
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header justify-content-between">
+                                <input id="mySearch" class="form-control mr-sm-2" type="search" placeholder="search manga" aria-label="Search">
+                                    
+                            </div>
+                        <div class="card-body row" id="mangalist">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">  
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Detail</h4>
+                        </div>
+                        <div class="card-body" id= "manga-detail">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Large modal -->
+        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button> -->
+
+        <div class="modal fade" id="chapterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+
+                    <div class="modal-header" id="chapter-title"></div>
+
+                    <div class="modal-body" id="chapter-images"></div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
   <script>
 
-    // HIDING STUFF
     
-    $("#youtube").hide()
-
-    $("#youtubeToggle").click(function() {
-      $("#news").hide()
-      $("#youtube").show()
-    })
-
-    $("#newsToggle").click(function() {
-      $("#youtube").hide()
-      $("#news").show()
-
-    })
 
     function onSignIn(googleUser) {
       console.log('google sign in')
@@ -230,6 +267,30 @@
       $("#logout").click(function () {
         localStorage.clear()
       })
+
+      // HIDING STUFF
+    
+    $("#youtube").hide()
+
+    $("#youtubeToggle").click(function() {
+      $("#news").hide()
+      $("#manga").hide()
+      $("#youtube").show()
+    })
+
+    $("#newsToggle").click(function() {
+      $("#youtube").hide()
+      $("#manga").hide()
+      $("#news").show()
+    })
+
+    $("#mangaToggle").click(function() {
+      $("#youtube").hide()
+      $("#news").hide()
+      $("#manga").show()
+
+    })
+
   </script>
   
 </body>
